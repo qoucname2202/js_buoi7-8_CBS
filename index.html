@@ -1,0 +1,762 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>Function-Exercises-JS</title>
+		<meta charset="utf-8" />
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1, shrink-to-fit=no"
+		/>
+		<link rel="shortcut icon" href="./images/icon.png" type="image/x-icon" />
+		<!-- Google font -->
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap"
+			rel="stylesheet"
+		/>
+		<!-- Bootstrap CSS -->
+		<link
+			rel="stylesheet"
+			href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+			integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+			crossorigin="anonymous"
+		/>
+		<!-- Font -->
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css"
+			integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A=="
+			crossorigin="anonymous"
+			referrerpolicy="no-referrer"
+		/>
+		<!-- Reset CSS -->
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
+			integrity="sha512-NhSC1YmyruXifcj/KFRWoC561YpHpc5Jtzgvbuzx5VozKpWvQ+4nXhPdFgmx8xqexRcpAglTj9sIBWINXa8x5w=="
+			crossorigin="anonymous"
+			referrerpolicy="no-referrer"
+		/>
+		<!-- My Css -->
+		<link rel="stylesheet" href="./css/style.css" />
+	</head>
+	<body>
+		<div class="container py-4">
+			<!-- Add numb to array  -->
+			<div class="row">
+				<div class="col-12">
+					<h4 class="mb-3 text-warning">🧮 Bài tập mảng</h4>
+					<form id="formAddNumArr" class="mt-4">
+						<div class="row">
+							<div class="col-12 col-lg-6">
+								<div class="form-group">
+									<div class="text-field">
+										<label for="txtNumb">Số n</label>
+										<input
+											autocomplete="off"
+											type="number"
+											id="txtNumb"
+											placeholder="Nhập vào số n"
+										/>
+									</div>
+								</div>
+							</div>
+							<div class="col-12 col-lg-6">
+								<button class="button" type="submit" id="btnAddNumb">
+									Thêm số
+								</button>
+							</div>
+						</div>
+					</form>
+					<div class="alert alert-success mt-2" role="alert">
+						<i class="fa-solid fa-hand-point-right icon-res"></i>
+						<span class="showArrNumb mess"></span>
+					</div>
+				</div>
+			</div>
+			<!-- Exercise 1: Sum of integers-->
+			<div class="row mt-2">
+				<div class="col-12">
+					<div class="dropdown">
+						<div
+							class="dropdown__select border-gradient border-gradient-purple"
+							id="dropdown__select-1"
+						>
+							<span class="dropdown__selected">📌 Tổng số dương</span>
+							<i class="fa fa-chevron-down dropdown__caret" id="icon-1"></i>
+						</div>
+						<div class="dropdown__list">
+							<div class="dropdown__item" id="btnAdd">
+								<div class="bd-callout mb-4 bg-white">
+									💡 Mô hình 3 khối
+									<ol>
+										<li>
+											Đầu vào
+											<ul>
+												<li>Nhập vào n</li>
+											</ul>
+										</li>
+										<li>
+											Xử lý
+											<ul>
+												<li>
+													Khởi tạo biến <span class="text-danger">sum</span>
+													để tính tổng
+												</li>
+												<li>
+													Khởi tạo vòng lặp duyệt từ 1 đến
+													<span><= N giá trị người dùng nhập vào</span>
+												</li>
+												<li>
+													Sau mỗi lần lặp thì
+													<span class="text-danger">sum+=i</span>
+												</li>
+											</ul>
+										</li>
+										<li>
+											Đầu ra
+											<ul>
+												<li>Hiển thị tổng</li>
+											</ul>
+										</li>
+									</ol>
+								</div>
+								<div class="row">
+									<div class="col-12">
+										<form id="formSum" class="mt-2">
+											<div class="row">
+												<div class="col-12">
+													<button
+														class="button-secondary"
+														type="submit"
+														id="btnAdd"
+													>
+														Tính tổng
+													</button>
+												</div>
+											</div>
+										</form>
+										<div class="alert alert-success mt-4" role="alert">
+											<i class="fa-solid fa-hands-praying" id="icon-res-2"></i>
+											<span class="showArrNumb mess"></span>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- Exercise 2: Couting of integers -->
+			<div class="row mt-2">
+				<div class="col-12">
+					<div class="dropdown">
+						<div
+							class="dropdown__select border-gradient border-gradient-purple"
+							id="dropdown__select-2"
+						>
+							<span class="dropdown__selected">📌 Đếm số dương</span>
+							<i class="fa fa-chevron-down dropdown__caret" id="icon-2"></i>
+						</div>
+						<div class="dropdown__list">
+							<div class="dropdown__item" id="btnCouting">
+								<div class="bd-callout mb-4 bg-white">
+									💡 Mô hình 3 khối
+									<ol>
+										<li>
+											Đầu vào
+											<ul>
+												<li>Nhập vào n</li>
+											</ul>
+										</li>
+										<li>
+											Xử lý
+											<ul>
+												<li></li>
+											</ul>
+										</li>
+										<li>
+											Đầu ra
+											<ul>
+												<li>Hiển thị số lượng số lượng số dương</li>
+											</ul>
+										</li>
+									</ol>
+								</div>
+								<div class="row">
+									<div class="col-12">
+										<form id="formCouting" class="mt-2">
+											<div class="row">
+												<div class="col-12">
+													<button
+														class="button-secondary"
+														type="submit"
+														id="btnCouting"
+													>
+														Đếm
+													</button>
+												</div>
+											</div>
+										</form>
+										<div class="alert alert-success mt-4" role="alert">
+											<i class="fa-solid fa-hands-praying" id="icon-res-2"></i>
+											<span class="showNumbCount mess"></span>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- Exercise 3: Find min -->
+			<div class="row mt-2">
+				<div class="col-12">
+					<div class="dropdown">
+						<div
+							class="dropdown__select border-gradient border-gradient-purple"
+							id="dropdown__select-3"
+						>
+							<span class="dropdown__selected">📌 Tìm số nhỏ nhất</span>
+							<i class="fa fa-chevron-down dropdown__caret" id="icon-3"></i>
+						</div>
+						<div class="dropdown__list">
+							<div class="dropdown__item" id="btnFindMin">
+								<div class="bd-callout mb-4 bg-white">
+									💡 Mô hình 3 khối
+									<ol>
+										<li>
+											Đầu vào
+											<ul>
+												<li>Nhập vào n</li>
+											</ul>
+										</li>
+										<li>
+											Xử lý
+											<ul>
+												<li></li>
+											</ul>
+										</li>
+										<li>
+											Đầu ra
+											<ul>
+												<li>Hiển thị số nhỏ nhất</li>
+											</ul>
+										</li>
+									</ol>
+								</div>
+								<div class="row">
+									<div class="col-12">
+										<form id="formFindMin" class="mt-2">
+											<div class="row">
+												<div class="col-12">
+													<button
+														class="button-secondary"
+														type="submit"
+														id="btnFindMin"
+													>
+														Tìm số nhỏ nhất
+													</button>
+												</div>
+											</div>
+										</form>
+										<div class="alert alert-success mt-4" role="alert">
+											<i class="fa-solid fa-hands-praying" id="icon-res-2"></i>
+											<span class="showFindMin mess"></span>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- Exercise 4: Find min integers -->
+			<div class="row mt-2">
+				<div class="col-12">
+					<div class="dropdown">
+						<div
+							class="dropdown__select border-gradient border-gradient-purple"
+							id="dropdown__select-4"
+						>
+							<span class="dropdown__selected">📌 Tìm số dương nhỏ nhất</span>
+							<i class="fa fa-chevron-down dropdown__caret" id="icon-4"></i>
+						</div>
+						<div class="dropdown__list">
+							<div class="dropdown__item" id="btnFindIntegerMin">
+								<div class="bd-callout mb-4 bg-white">
+									💡 Mô hình 3 khối
+									<ol>
+										<li>
+											Đầu vào
+											<ul>
+												<li>Nhập vào n</li>
+											</ul>
+										</li>
+										<li>
+											Xử lý
+											<ul>
+												<li></li>
+											</ul>
+										</li>
+										<li>
+											Đầu ra
+											<ul>
+												<li>Hiển thị số dương nhỏ nhất</li>
+											</ul>
+										</li>
+									</ol>
+								</div>
+								<div class="row">
+									<div class="col-12">
+										<form id="formFindIntegerMin" class="mt-2">
+											<div class="row">
+												<div class="col-12">
+													<button
+														class="button-secondary"
+														type="submit"
+														id="btnFindIntegerMin"
+													>
+														Tìm số dương nhỏ nhất
+													</button>
+												</div>
+											</div>
+										</form>
+										<div class="alert alert-success mt-4" role="alert">
+											<i class="fa-solid fa-hands-praying" id="icon-res-2"></i>
+											<span class="showIntegerMin mess"></span>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- Exercise 5: Find last even number -->
+			<div class="row mt-2">
+				<div class="col-12">
+					<div class="dropdown">
+						<div
+							class="dropdown__select border-gradient border-gradient-purple"
+							id="dropdown__select-5"
+						>
+							<span class="dropdown__selected">📌 Tìm số chẵn cuối cùng</span>
+							<i class="fa fa-chevron-down dropdown__caret" id="icon-5"></i>
+						</div>
+						<div class="dropdown__list">
+							<div class="dropdown__item" id="btnFindLastEven">
+								<div class="bd-callout mb-4 bg-white">
+									💡 Mô hình 3 khối
+									<ol>
+										<li>
+											Đầu vào
+											<ul>
+												<li>Nhập vào n</li>
+											</ul>
+										</li>
+										<li>
+											Xử lý
+											<ul>
+												<li></li>
+											</ul>
+										</li>
+										<li>
+											Đầu ra
+											<ul>
+												<li>Hiển thị số chẵn cuối cùng</li>
+											</ul>
+										</li>
+									</ol>
+								</div>
+								<div class="row">
+									<div class="col-12">
+										<form id="formFindLastNumbEven" class="mt-2">
+											<div class="row">
+												<div class="col-12">
+													<button
+														class="button-secondary"
+														type="submit"
+														id="btnFindLastEven"
+													>
+														Tìm số chẵn cuối cùng
+													</button>
+												</div>
+											</div>
+										</form>
+										<div class="alert alert-success mt-4" role="alert">
+											<i class="fa-solid fa-hands-praying" id="icon-res-2"></i>
+											<span class="showLastEven mess"></span>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- Exercise 6: Swap number -->
+			<div class="row mt-2">
+				<div class="col-12">
+					<div class="dropdown">
+						<div
+							class="dropdown__select border-gradient border-gradient-purple"
+							id="dropdown__select-6"
+						>
+							<span class="dropdown__selected">📌 Đổi chỗ</span>
+							<i class="fa fa-chevron-down dropdown__caret" id="icon-6"></i>
+						</div>
+						<div class="dropdown__list">
+							<div class="dropdown__item" id="btnSwapNumb">
+								<div class="bd-callout mb-4 bg-white">
+									💡 Mô hình 3 khối
+									<ol>
+										<li>
+											Đầu vào
+											<ul>
+												<li>Nhập vào n</li>
+											</ul>
+										</li>
+										<li>
+											Xử lý
+											<ul>
+												<li></li>
+											</ul>
+										</li>
+										<li>
+											Đầu ra
+											<ul>
+												<li>Hiển thị</li>
+											</ul>
+										</li>
+									</ol>
+								</div>
+								<div class="row">
+									<div class="col-12">
+										<form id="formFindLastNumbEven" class="mt-2">
+											<div class="row">
+												<div class="col-12 col-lg-6">
+													<div class="form-group">
+														<div class="text-field">
+															<label for="txtLocal_1">Vị trí thứ 1</label>
+															<input
+																autocomplete="off"
+																type="number"
+																id="txtLocal_1"
+																placeholder="Nhập vị trí thứ 1"
+															/>
+														</div>
+													</div>
+												</div>
+												<div class="col-12 col-lg-6">
+													<div class="form-group">
+														<div class="text-field">
+															<label for="txtLocal_2">Vị trí số 2</label>
+															<input
+																autocomplete="off"
+																type="number"
+																id="txtLocal_2"
+																placeholder="Nhập vị trí số 2"
+															/>
+														</div>
+													</div>
+												</div>
+												<div class="col-12">
+													<button
+														class="button-secondary"
+														type="submit"
+														id="btnSwapNumb"
+													>
+														Đổi chỗ
+													</button>
+												</div>
+											</div>
+										</form>
+										<div class="alert alert-success mt-4" role="alert">
+											<i class="fa-solid fa-hands-praying" id="icon-res-2"></i>
+											<span class="showSwapNumb mess"></span>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- Exercise 7: Sort up ascending -->
+			<div class="row mt-2">
+				<div class="col-12">
+					<div class="dropdown">
+						<div
+							class="dropdown__select border-gradient border-gradient-purple"
+							id="dropdown__select-7"
+						>
+							<span class="dropdown__selected">📌 Sắp xếp tăng dần</span>
+							<i class="fa fa-chevron-down dropdown__caret" id="icon-7"></i>
+						</div>
+						<div class="dropdown__list">
+							<div class="dropdown__item" id="btnSortAscending">
+								<div class="bd-callout mb-4 bg-white">
+									💡 Mô hình 3 khối
+									<ol>
+										<li>
+											Đầu vào
+											<ul>
+												<li>Nhập vào n</li>
+											</ul>
+										</li>
+										<li>
+											Xử lý
+											<ul>
+												<li></li>
+											</ul>
+										</li>
+										<li>
+											Đầu ra
+											<ul>
+												<li>Hiển thị mảng sau khi sắp xếp</li>
+											</ul>
+										</li>
+									</ol>
+								</div>
+								<div class="row">
+									<div class="col-12">
+										<form id="formFindLastNumbEven" class="mt-2">
+											<div class="row">
+												<div class="col-12">
+													<button
+														class="button-secondary"
+														type="submit"
+														id="btnSortAscending"
+													>
+														Sắp xếp
+													</button>
+												</div>
+											</div>
+										</form>
+										<div class="alert alert-success mt-4" role="alert">
+											<i class="fa-solid fa-hands-praying" id="icon-res-2"></i>
+											<span class="showSortingNumb mess"></span>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- Exercise 8: Find first prime number -->
+			<div class="row mt-2">
+				<div class="col-12">
+					<div class="dropdown">
+						<div
+							class="dropdown__select border-gradient border-gradient-purple"
+							id="dropdown__select-8"
+						>
+							<span class="dropdown__selected"
+								>📌 Tìm số nguyên tố đầu tiên</span
+							>
+							<i class="fa fa-chevron-down dropdown__caret" id="icon-8"></i>
+						</div>
+						<div class="dropdown__list">
+							<div class="dropdown__item" id="btnFindFirstPrime">
+								<div class="bd-callout mb-4 bg-white">
+									💡 Mô hình 3 khối
+									<ol>
+										<li>
+											Đầu vào
+											<ul>
+												<li>Nhập vào n</li>
+											</ul>
+										</li>
+										<li>
+											Xử lý
+											<ul>
+												<li></li>
+											</ul>
+										</li>
+										<li>
+											Đầu ra
+											<ul>
+												<li>Hiển thị số nguyên tố đầu tiên</li>
+											</ul>
+										</li>
+									</ol>
+								</div>
+								<div class="row">
+									<div class="col-12">
+										<form id="formFindLastNumbEven" class="mt-2">
+											<div class="row">
+												<div class="col-12">
+													<button
+														class="button-secondary"
+														type="submit"
+														id="btnFindFirstPrime"
+													>
+														Tìm số nguyên tố
+													</button>
+												</div>
+											</div>
+										</form>
+										<div class="alert alert-success mt-4" role="alert">
+											<i class="fa-solid fa-hands-praying" id="icon-res-2"></i>
+											<span class="showFirstPrime mess"></span>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- Exercise 9: Couting integers -->
+			<div class="row mt-2">
+				<div class="col-12">
+					<div class="dropdown">
+						<div
+							class="dropdown__select border-gradient border-gradient-purple"
+							id="dropdown__select-9"
+						>
+							<span class="dropdown__selected">📌 Đếm số nguyên</span>
+							<i class="fa fa-chevron-down dropdown__caret" id="icon-9"></i>
+						</div>
+						<div class="dropdown__list">
+							<div class="dropdown__item" id="btnCoutingInteger">
+								<div class="bd-callout mb-4 bg-white">
+									💡 Mô hình 3 khối
+									<ol>
+										<li>
+											Đầu vào
+											<ul>
+												<li>Nhập vào n</li>
+											</ul>
+										</li>
+										<li>
+											Xử lý
+											<ul>
+												<li></li>
+											</ul>
+										</li>
+										<li>
+											Đầu ra
+											<ul>
+												<li>Hiển thị số lượng số nguyên</li>
+											</ul>
+										</li>
+									</ol>
+								</div>
+								<div class="row">
+									<div class="col-12">
+										<form id="formCountingInteger" class="mt-2">
+											<div class="row">
+												<div class="col-12">
+													<button
+														class="button-secondary"
+														type="submit"
+														id="btnCoutingInteger"
+													>
+														Đếm số nguyên
+													</button>
+												</div>
+											</div>
+										</form>
+										<div class="alert alert-success mt-4" role="alert">
+											<i class="fa-solid fa-hands-praying" id="icon-res-2"></i>
+											<span class="showAmountInteger mess"></span>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- Exercise 10: Compare the number of negative and positive numbers -->
+			<div class="row mt-2">
+				<div class="col-12">
+					<div class="dropdown">
+						<div
+							class="dropdown__select border-gradient border-gradient-purple"
+							id="dropdown__select-10"
+						>
+							<span class="dropdown__selected"
+								>📌 So sánh số lượng số âm và dương</span
+							>
+							<i class="fa fa-chevron-down dropdown__caret" id="icon-10"></i>
+						</div>
+						<div class="dropdown__list">
+							<div class="dropdown__item" id="btnCompareAmountNumb">
+								<div class="bd-callout mb-4 bg-white">
+									💡 Mô hình 3 khối
+									<ol>
+										<li>
+											Đầu vào
+											<ul>
+												<li>Nhập vào n</li>
+											</ul>
+										</li>
+										<li>
+											Xử lý
+											<ul>
+												<li></li>
+											</ul>
+										</li>
+										<li>
+											Đầu ra
+											<ul>
+												<li>
+													Hiển thị kết quả so sánh số lượng số âm và số dương
+												</li>
+											</ul>
+										</li>
+									</ol>
+								</div>
+								<div class="row">
+									<div class="col-12">
+										<form id="formCompareAmountNumb" class="mt-2">
+											<div class="row">
+												<div class="col-12">
+													<button
+														class="button-secondary"
+														type="submit"
+														id="btnCompareAmountNumb"
+													>
+														So sánh
+													</button>
+												</div>
+											</div>
+										</form>
+										<div class="alert alert-success mt-4" role="alert">
+											<i class="fa-solid fa-hands-praying" id="icon-res-2"></i>
+											<span class="showCompareNumb mess"></span>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- Optional JavaScript -->
+		<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+		<script
+			src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+			integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+			crossorigin="anonymous"
+		></script>
+		<script
+			src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+			integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+			crossorigin="anonymous"
+		></script>
+		<script
+			src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+			integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+			crossorigin="anonymous"
+		></script>
+		<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.29/dist/sweetalert2.all.min.js"></script>
+		<script src="./js/main.js"></script>
+	</body>
+</html>
