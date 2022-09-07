@@ -11,6 +11,42 @@ function dropdown(id, idIcon) {
 	});
 }
 // Features add numbers to array
+let numbList = [];
+document.getElementById('btnAddNumb').addEventListener('click', e => {
+	e.preventDefault();
+	const value = +document.getElementById('txtNumb').value;
+	const reuslt = document.querySelector('.showArrNumb');
+	numbList.push(value);
+	reuslt.innerHTML = numbList.join(',');
+	setTimeout(() => {
+		document.getElementById('formAddNumArr').reset();
+	}, 300);
+});
+// Feature button reset array
+document.getElementById('btnReset').addEventListener('click', e => {
+	e.preventDefault();
+	const reuslt = document.querySelector('.showArrNumb');
+	reuslt.innerHTML = '';
+});
+
+// Convert string to array input feild
+function convertStrToArr(str) {
+	if (str.length === 0) return 0;
+	return str
+		.trim()
+		.split(',')
+		.map(item => +item);
+}
+// Features Sum Integer Array
+function sumIntegerArr(arr) {
+	if (arr.length === 0) return 0;
+	return arr
+		.filter(val => val > 0)
+		.reduce((total, item) => {
+			return (total += item);
+		}, 0);
+}
+// Feature Counting up Integer
 
 // Features checking for prime numbers
 
@@ -26,7 +62,15 @@ function dropdown(id, idIcon) {
 dropdown('dropdown__select-1', 'icon-1');
 document.getElementById('btnAdd').addEventListener('click', e => {
 	e.preventDefault();
-	console.log('Hello bài 1');
+	const txtNumbList = document.querySelector('.showArrNumb').textContent;
+	const numbList = convertStrToArr(txtNumbList);
+	const result = document.querySelector('.showTotal');
+	if (numbList === 0) {
+		result.innerHTML = `Tổng số dương: ${numbList}`;
+	} else {
+		const total = sumIntegerArr(numbList);
+		result.innerHTML = `Tổng số dương: ${total}`;
+	}
 });
 // Exercise 2: Couting of integers
 dropdown('dropdown__select-2', 'icon-2');
