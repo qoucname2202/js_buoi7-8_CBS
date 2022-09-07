@@ -40,14 +40,25 @@ function convertStrToArr(str) {
 // Features Sum Integer Array
 function sumIntegerArr(arr) {
 	if (arr.length === 0) return 0;
-	return arr
-		.filter(val => val > 0)
-		.reduce((total, item) => {
-			return (total += item);
-		}, 0);
+	let sum = 0;
+	for (let i = 0; i < arr.length; i++) {
+		if (arr[i] > 0) {
+			sum += arr[i];
+		}
+	}
+	return sum;
 }
 // Feature Counting up Integer
-
+function countIntegerNumb(arr) {
+	if (arr.length === 0) return 0;
+	let count = 0;
+	arr.forEach(item => {
+		if (item > 0) {
+			count += 1;
+		}
+	});
+	return count;
+}
 // Features checking for prime numbers
 
 // Features checking for even or odd numbers
@@ -71,12 +82,26 @@ document.getElementById('btnAdd').addEventListener('click', e => {
 		const total = sumIntegerArr(numbList);
 		result.innerHTML = `Tổng số dương: ${total}`;
 	}
+	setTimeout(() => {
+		result.innerHTML = '';
+	}, 5000);
 });
 // Exercise 2: Couting of integers
 dropdown('dropdown__select-2', 'icon-2');
 document.getElementById('btnCouting').addEventListener('click', e => {
 	e.preventDefault();
-	console.log('Hello bài 2');
+	const txtNumbList = document.querySelector('.showArrNumb').textContent;
+	const numbList = convertStrToArr(txtNumbList);
+	const result = document.querySelector('.showNumbCount');
+	if (numbList === 0) {
+		result.innerHTML = `Số dương: ${numbList}`;
+	} else {
+		const count = countIntegerNumb(numbList);
+		result.innerHTML = `Số dương: ${count}`;
+	}
+	setTimeout(() => {
+		result.innerHTML = '';
+	}, 5000);
 });
 // Exercise 3: Find min
 dropdown('dropdown__select-3', 'icon-3');
