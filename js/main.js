@@ -20,7 +20,7 @@ document.getElementById('btnAddNumb').addEventListener('click', e => {
 	reuslt.innerHTML = numbList.join(',');
 	setTimeout(() => {
 		document.getElementById('formAddNumArr').reset();
-	}, 300);
+	}, 200);
 });
 // Feature button reset array
 document.getElementById('btnReset').addEventListener('click', e => {
@@ -60,11 +60,28 @@ function countIntegerNumb(arr) {
 	return count;
 }
 // Features checking for prime numbers
-
+function isPrime(numb) {
+	if (numb === 1) return true;
+	if (numb === 2) return false;
+	for (let i = 2; i <= Math.sqrt(numb); i++) {
+		if (numb % i === 0) {
+			return false;
+		}
+	}
+	return true;
+}
 // Features checking for even or odd numbers
 
 // Features find min numbers
-
+function findMin(arr) {
+	let min = arr[0];
+	for (let i = 0; i < arr.length; i++) {
+		if (arr[i] < min) {
+			min = arr[i];
+		}
+	}
+	return min;
+}
 // Features find integers numbers
 
 // Features compare negative number vs positive number
@@ -107,7 +124,25 @@ document.getElementById('btnCouting').addEventListener('click', e => {
 dropdown('dropdown__select-3', 'icon-3');
 document.getElementById('btnFindMin').addEventListener('click', e => {
 	e.preventDefault();
-	console.log('Hello bài 3');
+	const txtNumbList = document.querySelector('.showArrNumb').textContent;
+	const numbList = convertStrToArr(txtNumbList);
+	const result = document.querySelector('.showFindMin');
+	if (numbList === 0) {
+		Swal.fire({
+			position: 'center',
+			icon: 'error',
+			title: 'Vui lòng kiểm tra lại',
+			showConfirmButton: false,
+			timer: 1500,
+		});
+		result.innerHTML = '';
+	} else {
+		const min = findMin(numbList);
+		result.innerHTML = `Số nhỏ nhất: ${min}`;
+	}
+	setTimeout(() => {
+		result.innerHTML = '';
+	}, 5000);
 });
 // Exercise 4: Find min integers
 dropdown('dropdown__select-4', 'icon-4');
