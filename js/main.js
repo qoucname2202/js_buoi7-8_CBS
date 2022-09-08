@@ -137,13 +137,25 @@ function findLastEven(arr) {
 	}
 	return numbList.length > 0 ? numbList[numbList.length - 1] : 0;
 }
-// Features compare negative number vs positive number
+// Swap
 function swap(arr, idx1, idx2) {
 	let temp = arr[idx1];
 	arr[idx1] = arr[idx2];
 	arr[idx2] = temp;
 	return arr;
 }
+// Checking nums is Integer
+function isIntegerNumb(arr) {
+	const numbList = [];
+	arr.forEach(item => {
+		if (Number.isInteger(item)) {
+			numbList.push(item);
+		}
+	});
+	return numbList.length > 0 ? numbList.length : 0;
+}
+// Features compare negative number vs positive number
+
 // Exercise 1: Sum of integers
 dropdown('dropdown__select-1', 'icon-1');
 document.getElementById('btnAdd').addEventListener('click', e => {
@@ -301,7 +313,22 @@ document.getElementById('btnFindFirstPrime').addEventListener('click', e => {
 dropdown('dropdown__select-9', 'icon-9');
 document.getElementById('btnCoutingInteger').addEventListener('click', e => {
 	e.preventDefault();
-	console.log('Hello bài 9');
+	const txtNumbList = document.querySelector('.showArrNumb').textContent;
+	const numbList = convertStrToArr(txtNumbList);
+	const result = document.querySelector('.showAmountInteger');
+	if (numbList === 0) {
+		Swal.fire({
+			position: 'center',
+			icon: 'error',
+			title: 'Vui lòng kiểm tra lại😢',
+			showConfirmButton: false,
+			timer: 1500,
+		});
+		result.innerHTML = '';
+	} else {
+		const value = isIntegerNumb(numbList);
+		result.innerHTML = `Số nguyên: ${value}`;
+	}
 });
 // Exercise 10: Compare the number of negative and positive numbers
 dropdown('dropdown__select-10', 'icon-10');
