@@ -42,6 +42,16 @@ document.getElementById('btnReset').addEventListener('click', e => {
 		reuslt.textContent = '';
 		numbList = [];
 	}
+	// Reset Form
+	document.querySelector('.showTotal').innerHTML = '';
+	document.querySelector('.showNumbCount').innerHTML = '';
+	document.querySelector('.showFindMin').innerHTML = '';
+	document.querySelector('.showIntegerMin').innerHTML = '';
+	document.querySelector('.showLastEven').innerHTML = '';
+	document.querySelector('.showSortingNumb').innerHTML = '';
+	document.querySelector('.showFirstPrime').innerHTML = '';
+	document.querySelector('.showAmountInteger').innerHTML = '';
+	document.querySelector('.showCompareNumb').innerHTML = '';
 });
 // Convert string to array input feild
 function convertStrToArr(str) {
@@ -144,7 +154,7 @@ function swap(arr, idx1, idx2) {
 	arr[idx2] = temp;
 	return arr;
 }
-// Checking nums is Integer
+// Checking number is Integers
 function isIntegerNumb(arr) {
 	const numbList = [];
 	arr.forEach(item => {
@@ -155,7 +165,22 @@ function isIntegerNumb(arr) {
 	return numbList.length > 0 ? numbList.length : 0;
 }
 // Features compare negative number vs positive number
-
+function compareNumb(arr) {
+	const negativeNumb = [];
+	const positiveNumb = [];
+	for (let i = 0; i < arr.length; i++) {
+		if (arr[i] > 0) {
+			positiveNumb.push(arr[i]);
+		} else {
+			negativeNumb.push(arr[i]);
+		}
+	}
+	return positiveNumb.length > negativeNumb.length
+		? `Số dương > số âm`
+		: positiveNumb.length < negativeNumb.length
+		? `Số dương < số âm`
+		: `Số dương = Số âm`;
+}
 // Exercise 1: Sum of integers
 dropdown('dropdown__select-1', 'icon-1');
 document.getElementById('btnAdd').addEventListener('click', e => {
@@ -334,5 +359,20 @@ document.getElementById('btnCoutingInteger').addEventListener('click', e => {
 dropdown('dropdown__select-10', 'icon-10');
 document.getElementById('btnCompareAmountNumb').addEventListener('click', e => {
 	e.preventDefault();
-	console.log('Hello bài 10');
+	const txtNumbList = document.querySelector('.showArrNumb').textContent;
+	const numbList = convertStrToArr(txtNumbList);
+	const result = document.querySelector('.showCompareNumb');
+	if (numbList === 0) {
+		Swal.fire({
+			position: 'center',
+			icon: 'error',
+			title: 'Vui lòng kiểm tra lại😢',
+			showConfirmButton: false,
+			timer: 1500,
+		});
+		result.innerHTML = ``;
+	} else {
+		const value = compareNumb(numbList);
+		result.innerHTML = value;
+	}
 });
