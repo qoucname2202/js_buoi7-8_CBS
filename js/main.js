@@ -28,6 +28,11 @@ document.getElementById('btnReset').addEventListener('click', e => {
 	const reuslt = document.querySelector('.showArrNumb');
 	reuslt.textContent = '';
 	numbList = [];
+	// Swap reset
+	document.getElementById('showRes').className = '';
+	document.getElementById('icon-res-2').remove();
+	document.querySelector('.showSwapNumb').remove();
+	document.getElementById('formSwap').reset();
 });
 // Convert string to array input feild
 function convertStrToArr(str) {
@@ -112,7 +117,12 @@ function findLastEven(arr) {
 	return numbList.length > 0 ? numbList[numbList.length - 1] : 0;
 }
 // Features compare negative number vs positive number
-
+function swap(arr, idx1, idx2) {
+	let temp = arr[idx1];
+	arr[idx1] = arr[idx2];
+	arr[idx2] = temp;
+	return arr;
+}
 // Exercise 1: Sum of integers
 dropdown('dropdown__select-1', 'icon-1');
 document.getElementById('btnAdd').addEventListener('click', e => {
@@ -201,7 +211,28 @@ document.getElementById('btnFindLastEven').addEventListener('click', e => {
 dropdown('dropdown__select-6', 'icon-6');
 document.getElementById('btnSwapNumb').addEventListener('click', e => {
 	e.preventDefault();
-	console.log('Hello bài 6');
+	const txtNumbList = document.querySelector('.showArrNumb').textContent;
+	const numbList = convertStrToArr(txtNumbList);
+	const result = document.getElementById('showRes');
+	const idx1 = +document.getElementById('txtLocal_1').value;
+	const idx2 = +document.getElementById('txtLocal_2').value;
+	if (numbList === 0) {
+		Swal.fire({
+			position: 'center',
+			icon: 'error',
+			title: 'Vui lòng kiểm tra lại😢',
+			showConfirmButton: false,
+			timer: 1500,
+		});
+		result.innerHTML = '';
+	} else {
+		const value = swap(numbList, idx1, idx2);
+		result.className = 'alert alert-success mt-4';
+		result.innerHTML = `
+      <i class="fa-solid fa-hands-praying" id="icon-res-2"></i>
+			<span class="showSwapNumb mess">Mảng sau khi đổi: ${value}</span>
+    `;
+	}
 });
 // Exercise 7: Sort up ascending
 dropdown('dropdown__select-7', 'icon-7');
