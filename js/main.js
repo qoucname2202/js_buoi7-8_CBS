@@ -29,10 +29,19 @@ document.getElementById('btnReset').addEventListener('click', e => {
 	reuslt.textContent = '';
 	numbList = [];
 	// Swap reset
-	document.getElementById('showRes').className = '';
-	document.getElementById('icon-res-2').remove();
-	document.querySelector('.showSwapNumb').remove();
-	document.getElementById('formSwap').reset();
+	const showRes = document.getElementById('showRes');
+	if (showRes.childNodes.length === 0) {
+		reuslt.textContent = '';
+		numbList = [];
+	} else {
+		// remove class swap exercise
+		showRes.className = '';
+		// remove element in view result
+		showRes.textContent = '';
+		document.getElementById('formSwap').reset();
+		reuslt.textContent = '';
+		numbList = [];
+	}
 });
 // Convert string to array input feild
 function convertStrToArr(str) {
@@ -238,7 +247,22 @@ document.getElementById('btnSwapNumb').addEventListener('click', e => {
 dropdown('dropdown__select-7', 'icon-7');
 document.getElementById('btnSortAscending').addEventListener('click', e => {
 	e.preventDefault();
-	console.log('Hello bài 7');
+	const txtNumbList = document.querySelector('.showArrNumb').textContent;
+	const numbList = convertStrToArr(txtNumbList);
+	const result = document.querySelector('.showSortingNumb');
+	if (numbList === 0) {
+		Swal.fire({
+			position: 'center',
+			icon: 'error',
+			title: 'Vui lòng kiểm tra lại😢',
+			showConfirmButton: false,
+			timer: 1500,
+		});
+		result.innerHTML = '';
+	} else {
+		const newArr = numbList.sort((a, b) => (a > b ? 1 : -1)).join(',');
+		result.innerHTML = `Mảng sau khi sắp xếp: ${newArr}`;
+	}
 });
 // Exercise 8: Find first prime number
 dropdown('dropdown__select-8', 'icon-8');
