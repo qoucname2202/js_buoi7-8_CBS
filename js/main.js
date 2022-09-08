@@ -75,7 +75,7 @@ function countIntegerNumb(arr) {
 }
 // Features checking for prime numbers
 function isPrime(numb) {
-	if (numb === 1) return true;
+	if (numb === 1) return false;
 	if (numb === 2) return false;
 	for (let i = 2; i <= Math.sqrt(numb); i++) {
 		if (numb % i === 0) {
@@ -83,6 +83,18 @@ function isPrime(numb) {
 		}
 	}
 	return true;
+}
+// Feature first prime number of array
+function firstPrimeNumb(arr) {
+	let primeNumbList = [];
+	arr.forEach(item => {
+		if (isPrime(item)) {
+			primeNumbList.push(item);
+		}
+	});
+	return primeNumbList.length === 0
+		? 'Mảng không chứa số nguyên tố'
+		: `Số nguyên tố đầu tiên: ${primeNumbList[0]}`;
 }
 // Features checking for even or odd numbers
 function isEvenOrOdd(numb) {
@@ -268,7 +280,22 @@ document.getElementById('btnSortAscending').addEventListener('click', e => {
 dropdown('dropdown__select-8', 'icon-8');
 document.getElementById('btnFindFirstPrime').addEventListener('click', e => {
 	e.preventDefault();
-	console.log('Hello bài 8');
+	const txtNumbList = document.querySelector('.showArrNumb').textContent;
+	const numbList = convertStrToArr(txtNumbList);
+	const result = document.querySelector('.showFirstPrime');
+	if (numbList === 0) {
+		Swal.fire({
+			position: 'center',
+			icon: 'error',
+			title: 'Vui lòng kiểm tra lại😢',
+			showConfirmButton: false,
+			timer: 1500,
+		});
+		result.innerHTML = '';
+	} else {
+		const value = firstPrimeNumb(numbList);
+		result.innerHTML = value;
+	}
 });
 // Exercise 9: Couting integers
 dropdown('dropdown__select-9', 'icon-9');
