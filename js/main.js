@@ -26,9 +26,9 @@ document.getElementById('btnAddNumb').addEventListener('click', e => {
 document.getElementById('btnReset').addEventListener('click', e => {
 	e.preventDefault();
 	const reuslt = document.querySelector('.showArrNumb');
-	reuslt.innerHTML = '';
+	reuslt.textContent = '';
+	numbList = [];
 });
-
 // Convert string to array input feild
 function convertStrToArr(str) {
 	if (str.length === 0) return 0;
@@ -71,7 +71,10 @@ function isPrime(numb) {
 	return true;
 }
 // Features checking for even or odd numbers
-
+function isEvenOrOdd(numb) {
+	if (typeof numb !== 'number') return 0;
+	return numb % 2 === 0 ? true : false;
+}
 // Features find min numbers
 function findMin(arr) {
 	let min = arr[0];
@@ -83,7 +86,31 @@ function findMin(arr) {
 	return min;
 }
 // Features find integers numbers
-
+function findMinInteger(arr) {
+	if (arr.length === 0) return 0;
+	const arrInteger = [];
+	for (let i = 0; i < arr.length; i++) {
+		const item = arr[i];
+		if (item > 0) {
+			arrInteger.push(item);
+		}
+	}
+	return arrInteger.length > 0
+		? `Số dương nhỏ nhất: ${findMin(arrInteger)}`
+		: `Không có số dương trong mảng`;
+}
+// Feature find last even number
+function findLastEven(arr) {
+	if (arr.length === 0) return 0;
+	const numbList = [];
+	for (let i = 0; i < arr.length; i++) {
+		const item = arr[i];
+		if (isEvenOrOdd(item)) {
+			numbList.push(item);
+		}
+	}
+	return numbList.length > 0 ? numbList[numbList.length - 1] : 0;
+}
 // Features compare negative number vs positive number
 
 // Exercise 1: Sum of integers
@@ -99,9 +126,6 @@ document.getElementById('btnAdd').addEventListener('click', e => {
 		const total = sumIntegerArr(numbList);
 		result.innerHTML = `Tổng số dương: ${total}`;
 	}
-	setTimeout(() => {
-		result.innerHTML = '';
-	}, 5000);
 });
 // Exercise 2: Couting of integers
 dropdown('dropdown__select-2', 'icon-2');
@@ -116,9 +140,6 @@ document.getElementById('btnCouting').addEventListener('click', e => {
 		const count = countIntegerNumb(numbList);
 		result.innerHTML = `Số dương: ${count}`;
 	}
-	setTimeout(() => {
-		result.innerHTML = '';
-	}, 5000);
 });
 // Exercise 3: Find min
 dropdown('dropdown__select-3', 'icon-3');
@@ -131,7 +152,7 @@ document.getElementById('btnFindMin').addEventListener('click', e => {
 		Swal.fire({
 			position: 'center',
 			icon: 'error',
-			title: 'Vui lòng kiểm tra lại',
+			title: 'Vui lòng kiểm tra lại😉',
 			showConfirmButton: false,
 			timer: 1500,
 		});
@@ -140,21 +161,41 @@ document.getElementById('btnFindMin').addEventListener('click', e => {
 		const min = findMin(numbList);
 		result.innerHTML = `Số nhỏ nhất: ${min}`;
 	}
-	setTimeout(() => {
-		result.innerHTML = '';
-	}, 5000);
 });
 // Exercise 4: Find min integers
 dropdown('dropdown__select-4', 'icon-4');
 document.getElementById('btnFindIntegerMin').addEventListener('click', e => {
 	e.preventDefault();
-	console.log('Hello bài 4');
+	const txtNumbList = document.querySelector('.showArrNumb').textContent;
+	const numbList = convertStrToArr(txtNumbList);
+	const result = document.querySelector('.showIntegerMin');
+	if (numbList === 0) {
+		Swal.fire({
+			position: 'center',
+			icon: 'error',
+			title: 'Mảng không có số dương😢',
+			showConfirmButton: false,
+			timer: 1500,
+		});
+		result.innerHTML = '';
+	} else {
+		const value = findMinInteger(numbList);
+		result.innerHTML = value;
+	}
 });
 // Exercise 5: Find last even number
 dropdown('dropdown__select-5', 'icon-5');
 document.getElementById('btnFindLastEven').addEventListener('click', e => {
 	e.preventDefault();
-	console.log('Hello bài 5');
+	const txtNumbList = document.querySelector('.showArrNumb').textContent;
+	const numbList = convertStrToArr(txtNumbList);
+	const result = document.querySelector('.showLastEven');
+	if (numbList === 0) {
+		result.innerHTML = `Số chẵn cuối cùng: ${numbList}`;
+	} else {
+		const value = findLastEven(numbList);
+		result.innerHTML = `Số chẵn cuối cùng: ${value}`;
+	}
 });
 // Exercise 6: Swap number
 dropdown('dropdown__select-6', 'icon-6');
