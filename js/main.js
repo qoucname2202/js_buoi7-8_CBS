@@ -86,7 +86,7 @@ function countIntegerNumb(arr) {
 // Features checking for prime numbers
 function isPrime(numb) {
 	if (numb === 1) return false;
-	if (numb === 2) return false;
+	if (numb === 2) return true;
 	for (let i = 2; i <= Math.sqrt(numb); i++) {
 		if (numb % i === 0) {
 			return false;
@@ -103,7 +103,7 @@ function firstPrimeNumb(arr) {
 		}
 	});
 	return primeNumbList.length === 0
-		? 'Mảng không chứa số nguyên tố'
+		? -1
 		: `Số nguyên tố đầu tiên: ${primeNumbList[0]}`;
 }
 // Features checking for even or odd numbers
@@ -145,7 +145,9 @@ function findLastEven(arr) {
 			numbList.push(item);
 		}
 	}
-	return numbList.length > 0 ? numbList[numbList.length - 1] : 0;
+	return numbList.length > 0
+		? `Số chẵn cuối cùng: ${numbList[numbList.length - 1]}`
+		: -1;
 }
 // Swap
 function swap(arr, idx1, idx2) {
@@ -259,10 +261,17 @@ document.getElementById('btnFindLastEven').addEventListener('click', e => {
 	const numbList = convertStrToArr(txtNumbList);
 	const result = document.querySelector('.showLastEven');
 	if (numbList === 0) {
-		result.innerHTML = `Số chẵn cuối cùng: ${numbList}`;
+		Swal.fire({
+			position: 'center',
+			icon: 'error',
+			title: 'Không tìm thấy số chẵn nào😢',
+			showConfirmButton: false,
+			timer: 1500,
+		});
+		result.innerHTML = -1;
 	} else {
 		const value = findLastEven(numbList);
-		result.innerHTML = `Số chẵn cuối cùng: ${value}`;
+		result.innerHTML = value;
 	}
 });
 // Exercise 6: Swap number
@@ -324,11 +333,11 @@ document.getElementById('btnFindFirstPrime').addEventListener('click', e => {
 		Swal.fire({
 			position: 'center',
 			icon: 'error',
-			title: 'Vui lòng kiểm tra lại😢',
+			title: 'Không tìm thấy số nguyên tố😢',
 			showConfirmButton: false,
 			timer: 1500,
 		});
-		result.innerHTML = '';
+		result.innerHTML = -1;
 	} else {
 		const value = firstPrimeNumb(numbList);
 		result.innerHTML = value;
